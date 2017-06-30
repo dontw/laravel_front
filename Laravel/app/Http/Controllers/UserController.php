@@ -22,17 +22,17 @@ class UserController extends BaseController
     {
         $postData['username'] = $uid;
         $postData['password'] = $pwd;
-        return ConnectionHelper::HttpPost('login',$postData);
+        return ConnectionHelper::HttpPost('login','userservice',$postData);
     }    
 
     function dummyTest()
     {
         $postData['username'] = 'c';
         $postData['password'] = 'ccc';
-        $res = 'Get:' . ConnectionHelper::HttpGet('vusers','test/?name=aa');
-        $res = $res . ',Post:' . ConnectionHelper::HttpPost('vusers',$postData);
-        $res = $res . ',Put:' . ConnectionHelper::HttpPut('vusers',$postData);
-        $res = $res . ',Delete:' . ConnectionHelper::HttpDelete('vusers','test/?name=aa');
+        $res = 'Get:' . ConnectionHelper::HttpGet('vusers','userservice','test/?name=aa');
+        $res = $res . ',Post:' . ConnectionHelper::HttpPost('vusers','userservice',$postData);
+        $res = $res . ',Put:' . ConnectionHelper::HttpPut('vusers','userservice',$postData);
+        $res = $res . ',Delete:' . ConnectionHelper::HttpDelete('vusers','userservice','test/?name=aa');
         return $res;
     }
 }

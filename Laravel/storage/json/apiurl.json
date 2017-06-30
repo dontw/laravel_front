@@ -1,4 +1,7 @@
 {
-    "login":"http://127.0.0.1:8888/login/",
-    "vusers":"http://127.0.0.1:8888/vusers/"
+    "userservice":{
+        "base":"http://192.168.128.143:8888/",
+        "login":"login/",
+        "vusers":"vusers/"
+    }    
 }
