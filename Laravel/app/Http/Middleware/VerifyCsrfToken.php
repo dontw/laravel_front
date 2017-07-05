@@ -12,6 +12,7 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        //
+        //All api function will validate token on backend service
+        //'api/*',
     ];
 }

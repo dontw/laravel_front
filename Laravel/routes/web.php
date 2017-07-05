@@ -17,3 +17,11 @@ Route::get('/', function () {
 
 Route::get('login', 'UserController@login');
 Route::get('api/login/{uid}/{pwd}', 'UserController@loginApi');
+
+/*
+*   Dummy restful api sample
+*/
+Route::get('api/dummy', 'DummyController@dummyGet');
+Route::post('api/dummy', 'DummyController@dummyPost');
+Route::put('api/dummy', 'DummyController@dummyPut');
+Route::delete('api/dummy', 'DummyController@dummyDelete');

@@ -3,7 +3,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta id="csrfToken" name="csrf-token" content="{{ csrf_token() }}">
         <title>Laravel</title>
 
         <!-- Fonts -->
@@ -22,6 +22,25 @@
         var url = "/api/login/";
         var parameters = document.getElementById("userId").value + "/" + document.getElementById("pwd").value;;
         fetch(url + parameters)
+        .then(function(response) {
+            return response.json();
+        }).then(function(jsonObj) {
+            console.log(jsonObj);
+            alert(jsonObj.token);
+        }).catch(function(err) {
+            // Error :(
+        });
+    }
+
+    function DummyPost(){
+        var config = {
+            method: 'POST',
+            headers: new Headers({
+                'Content-Type': 'text/json',
+                'X-CSRF-TOKEN': document.getElementById("csrfToken").content
+            })
+        }
+        fetch('/api/dummy',config)
         .then(function(response) {
             return response.json();
         }).then(function(jsonObj) {
