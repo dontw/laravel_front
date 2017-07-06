@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Routing\Controller as BaseController;
 use App\Utility\ConnectionHelper;
+use Illuminate\Http\Request;
 
 class DummyController extends BaseController
 {

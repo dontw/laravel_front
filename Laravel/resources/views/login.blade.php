@@ -8,16 +8,30 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
     </head>
     <body>
         <h1>Laravel User Login</h1>
-
+        <h1>{{ csrf_token() }}</h1>
         login id:<input type="text" id="userId" /><br/>
         password:<input type="password" id="pwd" /><br/>
         <input type="button" onclick="loginClk()" value="login"/>
+        <form method="POST" action="/api/dummy">
+            <input type="submit" value="TEST CSRF"/>
+            <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+        </form>
     </body>
 </html>
 <script>
+    // $.ajaxSetup({
+    //     headers: {
+    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //     }
+    // });
+    // function AjaxDummyPost(){
+    //     $.post('/api/dummy');
+    // }
+
     function loginClk(){
         var url = "/api/login/";
         var parameters = document.getElementById("userId").value + "/" + document.getElementById("pwd").value;;
@@ -31,7 +45,7 @@
             // Error :(
         });
     }
-
+    
     function DummyPost(){
         var config = {
             method: 'POST',

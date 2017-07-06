@@ -7,7 +7,7 @@ use App\Utility\ConnectionHelper;
 class UserController extends BaseController
 {    
     public function login()
-    {                
+    {              
         return view('login');
     }
 
