@@ -1,7 +1,10 @@
 {
-    "userservice":{
-        "base":"http://192.168.128.143:8888/",
+    "userservice":{    
+        "base1":"http://192.168.128.143:8888/",    
+        "base":"http://127.0.0.1:8888/",
         "login":"login/",
-        "vusers":"vusers/"
+        "dummy":"dummy/",
+        "csrf":"/csrf/token/",
+        "users":"users/"
     }    
 }

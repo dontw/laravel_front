@@ -13,7 +13,7 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         //All api function will validate token on backend service
-        //'api/*',
+        'api/*',
     ];
 
     /**

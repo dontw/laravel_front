@@ -25,3 +25,5 @@ Route::get('api/dummy', 'DummyController@dummyGet');
 Route::post('api/dummy', 'DummyController@dummyPost');
 Route::put('api/dummy', 'DummyController@dummyPut');
 Route::delete('api/dummy', 'DummyController@dummyDelete');
+
+Route::get('api/users/{user_name}', 'UserController@userApi');

@@ -1,9 +1,12 @@
+<?php
+    $csrf = App\Utility\CsrfHelper::GetCsrfToken();
+?>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta id="csrfToken" name="csrf-token" content="{{ csrf_token() }}">
+        <meta id="csrfToken" name="csrf-token" content="{{ $csrf }}">
         <title>Laravel</title>
 
         <!-- Fonts -->
@@ -11,27 +14,24 @@
         <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
     </head>
     <body>
-        <h1>Laravel User Login</h1>
-        <h1>{{ csrf_token() }}</h1>
-        login id:<input type="text" id="userId" /><br/>
-        password:<input type="password" id="pwd" /><br/>
-        <input type="button" onclick="loginClk()" value="login"/>
-        <form method="POST" action="/api/dummy">
-            <input type="submit" value="TEST CSRF"/>
-            <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
-        </form>
+        <?php
+            if($csrf != '')
+            {
+                echo '<h1>WELCOME</h1>';
+            }
+            else
+            {
+                echo '<h1>Laravel User Login</h1>        
+                login id:<input type="text" id="userId" /><br/>
+                password:<input type="password" id="pwd" /><br/>
+                <input type="button" onclick="loginClk()" value="login"/>';
+            }
+        ?>
+                
     </body>
 </html>
 <script>
-    // $.ajaxSetup({
-    //     headers: {
-    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //     }
-    // });
-    // function AjaxDummyPost(){
-    //     $.post('/api/dummy');
-    // }
-
+    
     function loginClk(){
         var url = "/api/login/";
         var parameters = document.getElementById("userId").value + "/" + document.getElementById("pwd").value;;
@@ -40,7 +40,9 @@
             return response.json();
         }).then(function(jsonObj) {
             console.log(jsonObj);
-            alert(jsonObj.token);
+            //alert(jsonObj.model);
+            setCookie("AUTH-TOKEN",jsonObj.model,30);
+            location.reload();
         }).catch(function(err) {
             // Error :(
         });
@@ -59,9 +61,52 @@
             return response.json();
         }).then(function(jsonObj) {
             console.log(jsonObj);
-            alert(jsonObj.token);
+            alert(jsonObj.status);
         }).catch(function(err) {
             // Error :(
         });
+    }
+
+    function GetUser(username){
+        var config = {
+            method: 'GET',
+            headers: new Headers({
+                'Content-Type': 'text/json',
+                'X-CSRF-TOKEN': document.getElementById("csrfToken").content,
+                'AUTH-TOKEN': getCookie('AUTH-TOKEN')
+            })
+        }
+        fetch('/api/users/' + username,config)
+        .then(function(response) {
+            return response.json();
+        }).then(function(jsonObj) {
+            console.log(jsonObj);
+            alert(jsonObj.status);
+        }).catch(function(err) {
+            // Error :(
+        });
+    }
+
+    function setCookie(cname, cvalue, exmins) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exmins*60*1000));
+        var expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
     }
 </script>
