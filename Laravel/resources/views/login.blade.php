@@ -17,7 +17,10 @@
         <?php
             if($csrf != '')
             {
-                echo '<h1>WELCOME</h1>';
+                echo '<h1>WELCOME</h1>
+                user name:<input type="text" id="userName" /><br/>
+                <input type="button" onclick="GetUser()" value="find user"/>
+                <div id="userInfo"></div>';
             }
             else
             {
@@ -67,7 +70,8 @@
         });
     }
 
-    function GetUser(username){
+    function GetUser(){
+        var username = document.getElementById("userName").value;
         var config = {
             method: 'GET',
             headers: new Headers({
@@ -81,7 +85,8 @@
             return response.json();
         }).then(function(jsonObj) {
             console.log(jsonObj);
-            alert(jsonObj.status);
+            document.getElementById("userInfo").innerText = JSON.stringify(jsonObj.model);
+            //alert(jsonObj.model);
         }).catch(function(err) {
             // Error :(
         });
