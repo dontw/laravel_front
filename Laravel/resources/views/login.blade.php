@@ -44,7 +44,7 @@
         }).then(function(jsonObj) {
             console.log(jsonObj);
             //alert(jsonObj.model);
-            setCookie("AUTH-TOKEN",jsonObj.model,30);
+            setCookie("AUTH-TOKEN",jsonObj.model.token,30);
             location.reload();
         }).catch(function(err) {
             // Error :(
