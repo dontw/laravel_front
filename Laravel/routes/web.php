@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/info', function () {
-    return 'OK';
+    return view('info');
 });
 
 Route::get('login', 'UserController@login');
