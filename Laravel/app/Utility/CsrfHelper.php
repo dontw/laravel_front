@@ -10,7 +10,7 @@ class CsrfHelper
         $obj = json_decode($jdata, true);
         if($obj['status'] == 0)
         {
-            return $obj['model']['token'];
+            return $obj['model']['csrftoken'];
         }
         return '';
     } 

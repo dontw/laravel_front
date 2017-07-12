@@ -27,7 +27,7 @@
                 echo '<h1>Laravel User Login</h1>        
                 login id:<input type="text" id="userId" /><br/>
                 password:<input type="password" id="pwd" /><br/>
-                <input type="button" onclick="loginClk()" value="login"/>';
+                <input type="button" onclick="DummyPost()" value="login"/>';
             }
         ?>
                 
@@ -64,7 +64,8 @@
             return response.json();
         }).then(function(jsonObj) {
             console.log(jsonObj);
-            alert(jsonObj.status);
+            window.location.href = '/info';
+            //alert(jsonObj.status);
         }).catch(function(err) {
             // Error :(
         });

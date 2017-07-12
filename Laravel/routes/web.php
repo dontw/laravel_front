@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/info', function () {
+    return 'OK';
+});
+
 Route::get('login', 'UserController@login');
 Route::get('api/login/{uid}/{pwd}', 'UserController@loginApi');
 
