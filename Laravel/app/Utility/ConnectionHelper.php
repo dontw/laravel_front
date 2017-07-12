@@ -40,7 +40,14 @@ class ConnectionHelper
         }  
         else
         {
-            $headers += array('authorization' => $auth_token);
+            if($auth_token=='') 
+            {
+                $headers += array('authorization' => '-1');
+            }  
+            else
+            {
+                $headers += array('authorization' => $auth_token);
+            }            
         }   
         $client = new Client(['headers' => $headers]);  
         return $client; 
