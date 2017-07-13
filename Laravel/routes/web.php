@@ -15,11 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/info', function () {
-    return view('info');
-});
+Route::get('/info', 'UserController@userInfo')->name('info');
 
-Route::get('login', 'UserController@login');
+Route::get('login', 'UserController@login')->name('login');
 Route::get('api/login/{uid}/{pwd}', 'UserController@loginApi');
 
 /*

@@ -5,12 +5,28 @@ use Illuminate\Routing\Controller as BaseController;
 use App\Utility\ConnectionHelper;
 use Illuminate\Http\Request;
 use Cookie;
+use Illuminate\Routing\Redirector;
+use App\Utility\CsrfHelper;
 
 class UserController extends BaseController
 {    
     public function login()
-    {      
+    {           
         return view('login');
+    }
+
+    //檢查是否登入
+    public function userInfo()
+    {        
+        $csrf = CsrfHelper::GetCsrfToken();
+        if($csrf != '')
+        {
+           return view('info');
+        }
+        else
+        {
+           return redirect()->route('login');    
+        }      
     }
 
     public function loginApi($uid,$pwd)
