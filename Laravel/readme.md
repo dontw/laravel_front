@@ -52,8 +52,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Project struct
 
-1.controller: /app/Http/Controllers/*.php
-2.helper:     /app/Utility/*.php
-3.view:       /resources/views/*.blade.php
-4.route:      /routes/*.php
-5.config:     /storage/json/*.json
+- 1.controller: /app/Http/Controllers/*.php
+- 2.helper:     /app/Utility/*.php
+- 3.view:       /resources/views/*.blade.php
+- 4.route:      /routes/*.php
+- 5.config:     /storage/json/*.json
