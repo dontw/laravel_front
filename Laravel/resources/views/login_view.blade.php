@@ -1,5 +1,5 @@
 <?php
-    $csrf = App\Utility\CsrfHelper::GetCsrfToken();
+    $csrf = App\Utility\CsrfHelper::GetCsrfToken();    
 ?>
 <html>
     <head>
@@ -27,7 +27,7 @@
                 echo '<h1>Laravel User Login</h1>        
                 login id:<input type="text" id="userId" /><br/>
                 password:<input type="password" id="pwd" /><br/>
-                <input type="button" onclick="DummyPost()" value="login"/>';
+                <input type="button" onclick="loginClk()" value="login"/>';
             }
         ?>
                 

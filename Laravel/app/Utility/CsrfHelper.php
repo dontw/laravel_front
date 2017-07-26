@@ -8,7 +8,7 @@ class CsrfHelper
     {
         $jdata = ConnectionHelper::HttpGet('csrf','userservice');
         $obj = json_decode($jdata, true);
-        if($obj['status'] == 0)
+        if($obj['status'] == 200)
         {
             return $obj['model']['csrftoken'];
         }
