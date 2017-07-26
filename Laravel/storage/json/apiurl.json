@@ -6,6 +6,9 @@
         "dummy":"dummy/",
         "csrf":"csrf/token/",
         "users":"users/",
-        "userbet":"userbet/"
+        "userbet":"userbet/",
+        "hkjc":"fetchhkjc/",
+        "hkjc_calculate":"fetchhkjc/result/",
+        "hkjc_rollback":"fetchhkjc/rollback/"
     }    
 }
