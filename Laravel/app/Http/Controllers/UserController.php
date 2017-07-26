@@ -12,7 +12,7 @@ class UserController extends BaseController
 {    
     public function login()
     {           
-        return view('login');
+        return view('login_view');
     }
 
     //檢查是否登入
