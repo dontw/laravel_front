@@ -15,6 +15,7 @@
             $obj = json_decode($data, true);
             $model = $obj['model'];
             echo json_encode($model);
-        ?>        
+        ?>
+        <a href="/menu">back</a>        
     </body>
 </html>

@@ -45,7 +45,7 @@ class UserController extends BaseController
         if($csrf != '')
         {
             $rsp = ConnectionHelper::HttpGet('hkjc','userservice','',$csrf);
-            return view('hkjc_view')->with('data', $hkjc);
+            return view('hkjc_view')->with('data', $rsp);
         }
         else
         {
