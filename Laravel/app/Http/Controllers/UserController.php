@@ -15,6 +15,15 @@ class UserController extends BaseController
         return view('login_view');
     }
 
+    public function menu()
+    {           
+        return view('menu_view');
+    }
+    public function betaction()
+    {           
+        return view('betaction_view');
+    }
+
     //檢查是否登入
     public function betInfo()
     {        

@@ -14,7 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('menu', 'UserController@menu')->name('menu');
+Route::get('betaction', 'UserController@betaction')->name('betaction');
 Route::get('betinfo', 'UserController@betInfo')->name('betinfo');
 
 Route::get('login', 'UserController@login')->name('login');

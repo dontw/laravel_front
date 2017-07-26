@@ -46,7 +46,7 @@
             //alert(jsonObj.model);
             setCookie("AUTH-TOKEN",jsonObj.model.token,30);
             //location.reload();
-            location.href = '/betinfo';
+            location.href = '/menu';
         }).catch(function(err) {
             // Error :(
         });
