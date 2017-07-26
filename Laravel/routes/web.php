@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/info', 'UserController@userInfo')->name('info');
+Route::get('betinfo', 'UserController@betInfo')->name('betinfo');
 
 Route::get('login', 'UserController@login')->name('login');
 Route::get('api/login/{uid}/{pwd}', 'UserController@loginApi');

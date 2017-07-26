@@ -4,7 +4,8 @@
         "base":"http://192.168.128.136:8888/",
         "login":"login/",
         "dummy":"dummy/",
-        "csrf":"/csrf/token/",
-        "users":"users/"
+        "csrf":"csrf/token/",
+        "users":"users/",
+        "userbet":"userbet/"
     }    
 }

@@ -16,16 +16,17 @@ class UserController extends BaseController
     }
 
     //檢查是否登入
-    public function userInfo()
+    public function betInfo()
     {        
         $csrf = CsrfHelper::GetCsrfToken();
         if($csrf != '')
         {
-           return view('info');
+            $rsp = ConnectionHelper::HttpGet('userbet','userservice','',$csrf);
+            return view('betinfo')->with('infos', $rsp);
         }
         else
         {
-           return redirect()->route('login');    
+            return redirect()->route('login');    
         }      
     }
 
