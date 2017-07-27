@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 Route::get('menu', 'UserController@menu')->name('menu');
 Route::get('betaction', 'BetController@betaction')->name('betaction');
+Route::get('rollbackaction', 'BetController@rollbackaction')->name('rollbackaction');
 Route::get('betinfo', 'BetController@betInfo')->name('betinfo');
 
 Route::get('hkjc', 'BetController@resultHKJC')->name('hkjc');

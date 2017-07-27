@@ -26,6 +26,20 @@ class BetController extends BaseController
             return redirect()->route('login');    
         }             
     }
+    public function rollbackaction()
+    {      
+        $csrf = CsrfHelper::GetCsrfToken();
+        if($csrf != '')
+        {                
+            $rsp = ConnectionHelper::HttpGet('account_balance','userservice','',$csrf);  
+            $json = json_decode($rsp);
+            return view('rollbackaction_view')->with('csrf', $csrf);
+        }
+        else
+        {
+            return redirect()->route('login');    
+        }             
+    }
 
     public function betApi(Request $request)
     {      
@@ -35,6 +49,16 @@ class BetController extends BaseController
         $postData['totalBet'] = 1;  
         $postData['selectedNumbers'] = $bodyContent;    
         $rsp = ConnectionHelper::HttpPost('bet','userservice',$postData,$csrf,$auth);  
+        return $rsp;
+    }
+
+    public function rollbackApi(Request $request)
+    {      
+        $bodyContent = $request->getContent();
+        $csrf = $request->header('X-CSRF-TOKEN');
+        $auth = $request->header('AUTH-TOKEN'); 
+        $postData['drawNumber'] = $bodyContent;    
+        $rsp = ConnectionHelper::HttpPost('hkjc_rollback','userservice',$postData);  
         return $rsp;
     }
 
