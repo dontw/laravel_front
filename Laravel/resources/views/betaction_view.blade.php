@@ -27,6 +27,12 @@
 <script>
     function Bet(){
         var numbers = document.getElementById("seletNum").value;
+        var reg = /^([0-9]{2,2}\+){5,48}[0-9]{2,2}$/i;
+        if(!reg.test(numbers)){
+            alert("invalid input");
+            document.getElementById("seletNum").value = "";
+            return;
+        }
         var config = {
             method: 'POST',
             headers: new Headers({
