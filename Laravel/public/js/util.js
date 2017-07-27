@@ -20,3 +20,9 @@ function getCookie(cname) {
     }
     return "";
 }
+
+function logout(){
+    alert("logout");
+    setCookie('AUTH-TOKEN','',0);
+    location.href = '/login';
+}
