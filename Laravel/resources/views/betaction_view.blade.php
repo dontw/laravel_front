@@ -13,8 +13,8 @@
     </head>
     <body>
         <h1>user bet action</h1>
-        Cash-balance:{{$cash}}</br>
-        Chip-balance:{{$chip}}</br>
+        Cash-balance:<div id="cashB">{{$cash}}</div></br>
+        Chip-balance:<div id="chipB">{{$chip}}</div></br>
         </br>
         輸入範例：</br>
         01+02+03+04+05+06</br>
@@ -27,6 +27,12 @@
 <script>
     function Bet(){
         var numbers = document.getElementById("seletNum").value;
+        var reg = /^([0-9]{2,2}\+){5,48}[0-9]{2,2}$/i;
+        if(!reg.test(numbers)){
+            alert("invalid input");
+            document.getElementById("seletNum").value = "";
+            return;
+        }
         var config = {
             method: 'POST',
             headers: new Headers({
@@ -42,6 +48,10 @@
             return response.json();
         }).then(function(jsonObj) {
             console.log(jsonObj);
+            if(jsonObj.model){
+                document.getElementById("cashB").textContent = jsonObj.model.cashBalance;
+                document.getElementById("chipB").textContent = jsonObj.model.chipBalance;
+            }            
             alert(jsonObj.message);            
         }).catch(function(err) {
             // Error :(
