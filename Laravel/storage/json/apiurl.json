@@ -9,6 +9,8 @@
         "userbet":"userbet/",
         "hkjc":"fetchhkjc/",
         "hkjc_calculate":"fetchhkjc/result/",
-        "hkjc_rollback":"fetchhkjc/rollback/"
+        "hkjc_rollback":"fetchhkjc/rollback/",
+        "account_balance":"accountinfo/",
+        "bet":"userbet/"
     }    
 }

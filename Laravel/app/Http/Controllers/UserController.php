@@ -18,40 +18,7 @@ class UserController extends BaseController
     public function menu()
     {           
         return view('menu_view');
-    }
-    public function betaction()
-    {           
-        return view('betaction_view');
-    }
-
-    //檢查是否登入
-    public function betInfo()
-    {        
-        $csrf = CsrfHelper::GetCsrfToken();
-        if($csrf != '')
-        {
-            $rsp = ConnectionHelper::HttpGet('userbet','userservice','',$csrf);
-            return view('betinfo')->with('infos', $rsp);
-        }
-        else
-        {
-            return redirect()->route('login');    
-        }      
-    }
-
-    public function resultHKJC()
-    {        
-        $csrf = CsrfHelper::GetCsrfToken();
-        if($csrf != '')
-        {
-            $rsp = ConnectionHelper::HttpGet('hkjc','userservice','',$csrf);
-            return view('hkjc_view')->with('data', $rsp);
-        }
-        else
-        {
-            return redirect()->route('login');    
-        }      
-    }
+    }    
 
     public function loginApi($uid,$pwd)
     {

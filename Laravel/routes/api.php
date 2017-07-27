@@ -13,6 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('login/{uid}/{pwd}', 'UserController@loginApi');
+Route::get('users/{user_name}', 'UserController@userApi');
+
+/*
+*   Dummy restful api sample
+*/
+Route::get('dummy', 'DummyController@dummyGet');
+Route::post('dummy', 'DummyController@dummyPost');
+Route::put('dummy', 'DummyController@dummyPut');
+Route::delete('dummy', 'DummyController@dummyDelete');
+
+// Route::post('bet', 'UserController@betApi');
+
+Route::post('bet', 'BetController@betApi');

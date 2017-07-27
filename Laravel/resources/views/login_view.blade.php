@@ -8,9 +8,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta id="csrfToken" name="csrf-token" content="{{ $csrf }}">
         <title>Laravel</title>
-
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <script src="/js/util.js"></script>
         <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
     </head>
     <body>
@@ -33,8 +33,7 @@
                 
     </body>
 </html>
-<script>
-    
+<script>    
     function loginClk(){
         var url = "/api/login/";
         var parameters = document.getElementById("userId").value + "/" + document.getElementById("pwd").value;;
@@ -50,27 +49,7 @@
         }).catch(function(err) {
             // Error :(
         });
-    }
-    
-    function DummyPost(){
-        var config = {
-            method: 'POST',
-            headers: new Headers({
-                'Content-Type': 'text/json',
-                'X-CSRF-TOKEN': document.getElementById("csrfToken").content
-            })
-        }
-        fetch('/api/dummy',config)
-        .then(function(response) {
-            return response.json();
-        }).then(function(jsonObj) {
-            console.log(jsonObj);
-            window.location.href = '/info';
-            //alert(jsonObj.status);
-        }).catch(function(err) {
-            // Error :(
-        });
-    }
+    }    
 
     function GetUser(){
         var username = document.getElementById("userName").value;
@@ -92,28 +71,49 @@
         }).catch(function(err) {
             // Error :(
         });
-    }
+    }    
+</script>
 
-    function setCookie(cname, cvalue, exmins) {
-        var d = new Date();
-        d.setTime(d.getTime() + (exmins*60*1000));
-        var expires = "expires="+ d.toUTCString();
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-    }
-
-    function getCookie(cname) {
-        var name = cname + "=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-                return c.substring(name.length, c.length);
-            }
+<script>
+    function Test(){
+        var numbers = '123456645456';
+        var config = {
+            method: 'POST',
+            headers: new Headers({
+                'Content-Type': 'text/json',
+                'X-CSRF-TOKEN': document.getElementById("csrfToken").content,
+                'AUTH-TOKEN': getCookie('AUTH-TOKEN')
+            }),
+            body:numbers
         }
-        return "";
+        fetch('/api/bet',config)
+        .then(function(response) {
+            return response.text();
+        }).then(function(text) {
+            console.log(text);
+            // window.location.href = '/info';
+            //alert(jsonObj.status);
+        }).catch(function(err) {
+            // Error :(
+        });
+    }
+    function DummyPost(){
+        var config = {
+            method: 'POST',
+            headers: new Headers({
+                'Content-Type': 'text/json',
+                'X-CSRF-TOKEN': document.getElementById("csrfToken").content
+            })
+        }
+        fetch('/api/dummy',config)
+        .then(function(response) {
+            return response.json();
+        }).then(function(jsonObj) {
+            console.log(jsonObj);
+            // window.location.href = '/info';
+            //alert(jsonObj.status);
+        }).catch(function(err) {
+            // Error :(
+        });
     }
 </script>
