@@ -76,7 +76,8 @@ class BetController extends BaseController
     public function resultApi(Request $request)
     {      
         $csrf = $request->header('X-CSRF-TOKEN');
-        $rsp = ConnectionHelper::HttpGet('hkjc_calculate','userservice','',$csrf);  
+        $auth = $request->header('AUTH-TOKEN');
+        $rsp = ConnectionHelper::HttpGet('hkjc_calculate','userservice','',$csrf,$auth);  
         return $rsp;
     }
 
