@@ -31,8 +31,6 @@ class BetController extends BaseController
         $csrf = CsrfHelper::GetCsrfToken();
         if($csrf != '')
         {                
-            $rsp = ConnectionHelper::HttpGet('account_balance','userservice','',$csrf);  
-            $json = json_decode($rsp);
             return view('rollbackaction_view')->with('csrf', $csrf);
         }
         else
@@ -58,7 +56,7 @@ class BetController extends BaseController
         $csrf = $request->header('X-CSRF-TOKEN');
         $auth = $request->header('AUTH-TOKEN'); 
         $postData['drawNumber'] = $bodyContent;    
-        $rsp = ConnectionHelper::HttpPost('hkjc_rollback','userservice',$postData);  
+        $rsp = ConnectionHelper::HttpPost('hkjc_rollback','userservice',$postData,$csrf,$auth);  
         return $rsp;
     }
 

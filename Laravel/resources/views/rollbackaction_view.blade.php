@@ -30,7 +30,7 @@
                 'X-CSRF-TOKEN': document.getElementById("csrfToken").content,
                 'AUTH-TOKEN': getCookie('AUTH-TOKEN')
             }),
-            body:drawNumber
+            body:drawNumber 
         }
         
         fetch('/api/rollback',config)
