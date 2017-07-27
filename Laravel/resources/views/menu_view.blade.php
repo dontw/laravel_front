@@ -13,16 +13,19 @@
         <h1>this is menu</h1>        
         <ul>
             <li>
-                <a href="/betaction">betaction</a>
+                <a href="/betaction">下注</a>
             </li>
             <li>
-                <a href="/betinfo">betinfo</a>
+                <a href="/betinfo">查詢中獎結果</a>
             </li>
             <li>
-                <a href="/hkjc">hkjc result</a>
+                <a href="/hkjc">擷取官網中獎號碼</a>
             </li>
             <li>
-                <a href="/rollbackaction">rollback action</a>
+                <a href="/rollbackaction">啟動錯誤回溯</a>
+            </li>
+            <li>
+                <a href="/resultaction">執行中獎結果運算</a>
             </li>
 
             

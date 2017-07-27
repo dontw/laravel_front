@@ -38,6 +38,18 @@ class BetController extends BaseController
             return redirect()->route('login');    
         }             
     }
+    public function resultaction()
+    {      
+        $csrf = CsrfHelper::GetCsrfToken();
+        if($csrf != '')
+        {                
+            return view('resultaction_view')->with('csrf', $csrf);
+        }
+        else
+        {
+            return redirect()->route('login');    
+        }             
+    }
 
     public function betApi(Request $request)
     {      
@@ -57,6 +69,14 @@ class BetController extends BaseController
         $auth = $request->header('AUTH-TOKEN'); 
         $postData['drawNumber'] = $bodyContent;    
         $rsp = ConnectionHelper::HttpPost('hkjc_rollback','userservice',$postData,$csrf,$auth);  
+        return $rsp;
+    }
+
+
+    public function resultApi(Request $request)
+    {      
+        $csrf = $request->header('X-CSRF-TOKEN');
+        $rsp = ConnectionHelper::HttpGet('hkjc_calculate','userservice','',$csrf);  
         return $rsp;
     }
 

@@ -26,4 +26,5 @@ Route::delete('dummy', 'DummyController@dummyDelete');
 
 Route::post('bet', 'BetController@betApi');
 Route::post('rollback', 'BetController@rollbackApi');
+Route::post('result', 'BetController@resultApi');
 
