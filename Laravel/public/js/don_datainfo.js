@@ -1,0 +1,1 @@
+ console.log(bet_data);

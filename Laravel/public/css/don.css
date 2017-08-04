@@ -1,0 +1,91 @@
+body{
+    font-family: Arial,"微軟正黑體", sans-serif;
+}
+
+.betInfoNum{
+    padding:0.6rem 0.6rem;
+    display: inline-block;
+    margin-right:10px;
+    margin-bottom:10px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background-color: #fffeff;
+    border-radius: 50%;
+    color: #555;
+    position: relative;
+    border: 2px solid #EF8477;
+    /* box-shadow: 1px 1px 1px 1px rgba(1,1,1,0.3); */
+    transition: .2s;
+}
+
+.betInfoNurmColor{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    display: inline-block;
+    background:#fff;
+    font-size: 1.1rem;
+    font-weight: 900;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    line-height: 3.4rem;
+    text-align: center;
+}
+
+.redBg{
+    background: url('../img/ball_red.png');
+    background-size: cover; 
+}
+.greenBg{
+    background: url('../img/ball_green.png');
+    background-size: cover; 
+}
+.blueBg{
+    background: url('../img/ball_blue.png');
+    background-size: cover;
+}
+
+.betInfoNum--Big{
+    font-size: 2rem;
+    padding:1.35rem 1rem;
+    cursor:pointer;
+}
+
+.betInfoNum--Big:active{
+    transform: scale(1.2);
+}
+
+
+.betInfoNum--Big--grey{
+    background-color:#ccc;
+    color: #FFF;
+    border-color: #ccc;
+}
+
+.betInfoNum--Big:hover{
+    background-color:#EF8477;
+    color: #FFF;
+    border-color: #EF8477;
+}
+
+.betInfoNum--Big--selected{
+    background-color:#EF8477;
+    color: #FFF;
+}
+
+.betAction_cash{
+    font-size: 2.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.betNumPanel{
+    display: flex;
+    justify-content: center; 
+    flex-wrap: wrap;
+    align-content: center;
+    margin-right:-10px;
+}
+
